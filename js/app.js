@@ -37,6 +37,7 @@ angular.module("quickDemoMovies",['ngRoute'])
   })
   .controller('UpcomingController', function($scope,MoviesFactory) {
 
+    $scope.section = "Upcoming Movies"
     MoviesFactory.getUpcoming()
       .then( function(response) {
         $scope.movies = response.data.results
@@ -45,15 +46,26 @@ angular.module("quickDemoMovies",['ngRoute'])
   })
   .controller('PopularController', function($scope,MoviesFactory) {
 
+    $scope.section = "Popular Movies"
     MoviesFactory.getPopular()
       .then( function(response) {
         $scope.movies = response.data.results
       })
 
   })
-    .controller('PopularController', function($scope,MoviesFactory) {
+  .controller('NowPlayingController', function($scope,MoviesFactory) {
 
-    MoviesFactory.getPopular()
+    $scope.section = "Now Playing movies"
+    MoviesFactory.getNowPlaying()
+      .then( function(response) {
+        $scope.movies = response.data.results
+      })
+
+  })
+  .controller('TopRatedController', function($scope,MoviesFactory) {
+
+    $scope.section = "Top Rated movies"
+    MoviesFactory.getTopRated()
       .then( function(response) {
         $scope.movies = response.data.results
       })
@@ -69,6 +81,14 @@ angular.module("quickDemoMovies",['ngRoute'])
       .when('/popular',{
         templateUrl: 'templates/main.html',
         controller: 'PopularController'
+      })
+      .when('/nowplaying',{
+        templateUrl: 'templates/main.html',
+        controller: 'NowPlayingController'
+      })
+      .when('/toprated',{
+        templateUrl: 'templates/main.html',
+        controller: 'TopRatedController'
       })
       .otherwise('/popular')
 
