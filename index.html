@@ -33,14 +33,13 @@
         </button>
         <a class="navbar-brand" href="#">Movies App 🎥</a>
       </div>
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#/upcoming">Upcoming</a></li>
-          <li><a href="#/popular">Popular</a></li>
-          <li><a href="#/nowplaying">Now Playing</a></li>
-          <li><a href="#/toprated">Top Rated</a></li>
+          <li ng-class="section === 'upcoming' ? 'active' : ''"><a href="#/upcoming">Upcoming</a></li>
+          <li ng-class="section === 'popular' ? 'active' : ''"><a href="#/popular">Popular</a></li>
+          <li ng-class="section === 'nowplaying' ? 'active' : ''"><a href="#/nowplaying">Now Playing</a></li>
+          <li ng-class="section === 'toprated' ? 'active' : ''"><a href="#/toprated">Top Rated</a></li>
         </ul>
 
       </div><!-- /.navbar-collapse -->

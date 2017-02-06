@@ -1,7 +1,8 @@
 angular.module("quickDemoMovies")
-  .controller('UpcomingController', function($scope,MoviesFactory) {
+  .controller('UpcomingController', function($scope,$rootScope,MoviesFactory) {
 
-    $scope.section = "Upcoming Movies"
+    $rootScope.section = 'upcoming'
+    $scope.title = "Upcoming Movies"
     MoviesFactory.getUpcoming()
       .then( function(response) {
         $scope.movies = response.data.results

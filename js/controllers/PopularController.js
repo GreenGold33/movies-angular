@@ -1,7 +1,8 @@
 angular.module("quickDemoMovies")
-  .controller('PopularController', function($scope, MoviesFactory) {
+  .controller('PopularController', function($scope, $rootScope, MoviesFactory) {
 
-    $scope.section = "Popular Movies"
+    $rootScope.section = 'popular'
+    $scope.title = "Popular Movies"
     MoviesFactory.getPopular()
       .then( function(response) {
         $scope.movies = response.data.results
