@@ -8,4 +8,4 @@ To install dependencies you can just do
 
 ```
 bower install
-``
+``` 
