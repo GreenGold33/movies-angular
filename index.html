@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="quickDemoMovies">
+<head>
+  <meta charset="UTF-8">
+  <title>Movies Angular Demo</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+  <style>
+    .movies ul {
+      display:flex;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .movies ul li {
+      margin: 10px;
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+  <ul>
+    <li><a href="#/upcoming">Upcoming</a></li>
+    <li><a href="#/popular">Popular</a></li>
+  </ul>
+
+  <div class="movies" ng-view></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+ <h1>{{ section }}</h1>
+  <ul>
+    <li ng-repeat="movie in movies">
+      <img src="http://image.tmdb.org/t/p/w150/{{ movie.poster_path }}" />
+      <p>{{ movie.title }}</p>
+    </li>
+  </ul>
