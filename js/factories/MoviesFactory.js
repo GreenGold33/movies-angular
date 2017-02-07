@@ -7,6 +7,21 @@ angular.module("quickDemoMovies")
       var url = 'https://api.themoviedb.org/3/movie/popular?api_key=<%KEY%>'
       url = url.replace('<%KEY%>',apiKey)
       return $http.get(url)
+                .then( function(response) {
+                  console.log(response);
+                  return response.data.results;
+                })
+                .then( function(movies) {
+                  console.log(movies);
+                  return movies.map(function(movie) {
+                    var currentMovieShortened = {
+                      title: movie.title,
+                      //poster_path: 'http://image.tmdb.org/t/p/w150/' + movie.poster_path
+                      poster_path: movie.poster_path
+                    }
+                    return currentMovieShortened;
+                  })
+                })
     }
 
     function getUpcoming(){
