@@ -1,11 +1,19 @@
-angular.module("quickDemoMovies")
-  .controller('NowPlayingController', function($scope, $rootScope, MoviesFactory) {
+(function() {
+
+  angular.module("quickDemoMovies")
+    .controller('NowPlayingController', NowPlayingController)
+
+  function NowPlayingController( $rootScope, MoviesFactory) {
+
+    var vm = this;
 
     $rootScope.section = 'nowplaying'
-    $scope.title = "Now Playing movies"
+    vm.title = "Now Playing movies"
     MoviesFactory.getNowPlaying()
       .then( function(response) {
-        $scope.movies = response.data.results
+        vm.movies = response.data.results
       })
 
-  })
+  }
+
+})()

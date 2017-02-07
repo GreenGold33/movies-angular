@@ -11,8 +11,9 @@ angular.module("quickDemoMovies")
         controller: 'PopularController'
       })
       .when('/nowplaying',{
-        templateUrl: 'templates/main.html',
-        controller: 'NowPlayingController'
+        templateUrl: 'templates/main-vm.html',
+        controller: 'NowPlayingController',
+        controllerAs: 'vm'
       })
       .when('/toprated',{
         templateUrl: 'templates/main.html',
