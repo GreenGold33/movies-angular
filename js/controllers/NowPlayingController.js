@@ -3,7 +3,7 @@
   angular.module("quickDemoMovies")
     .controller('NowPlayingController', NowPlayingController)
 
-  function NowPlayingController( $rootScope, MoviesFactory) {
+  function NowPlayingController( $rootScope, MoviesFactory ) {
 
     var vm = this;
 

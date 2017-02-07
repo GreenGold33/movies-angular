@@ -7,7 +7,7 @@ angular.module("quickDemoMovies")
         controller: 'UpcomingController'
       })
       .when('/popular',{
-        templateUrl: 'templates/main.html',
+        templateUrl: 'templates/main-popular.html',
         controller: 'PopularController'
       })
       .when('/nowplaying',{

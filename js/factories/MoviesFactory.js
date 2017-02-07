@@ -16,8 +16,7 @@ angular.module("quickDemoMovies")
                   return movies.map(function(movie) {
                     var currentMovieShortened = {
                       title: movie.title,
-                      //poster_path: 'http://image.tmdb.org/t/p/w150/' + movie.poster_path
-                      poster_path: movie.poster_path
+                      poster_path: 'http://image.tmdb.org/t/p/w150/' + movie.poster_path
                     }
                     return currentMovieShortened;
                   })
