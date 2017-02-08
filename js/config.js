@@ -19,6 +19,11 @@ angular.module("quickDemoMovies")
         templateUrl: 'templates/main.html',
         controller: 'TopRatedController'
       })
+      .when('/details/:idMovie',{
+        templateUrl: 'templates/details.html',
+        controller: 'DetailsController',
+        controllerAs: 'vm'
+      })
       .otherwise('/popular')
 
   })

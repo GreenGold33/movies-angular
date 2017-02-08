@@ -34,17 +34,27 @@
         return $http.get(url)
       }
 
+      function getMovieDetails( idMovie ){
+        var url = 'https://api.themoviedb.org/3/movie/<%MOVIE_ID%>?api_key=<%KEY%>'
+        url = url.replace('<%MOVIE_ID%>',idMovie)
+        url = url.replace('<%KEY%>',apiKey)
+        return $http.get(url)
+                .then(function(response) {
+                  return response.data;
+                })
+      }
+
       return {
         getPopular: getPopular,
         getUpcoming: getUpcoming,
         getNowPlaying: getNowPlaying,
-        getTopRated: getTopRated
+        getTopRated: getTopRated,
+        getMovieDetails: getMovieDetails
       }
 
     })
 
   function getResults(response) {
-    console.log(response);
     return response.data.results;
   }
 
