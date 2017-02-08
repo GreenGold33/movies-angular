@@ -1,51 +1,62 @@
-angular.module("quickDemoMovies")
-  .factory("MoviesFactory", function($http) {
+(function() {
 
-    var apiKey = 'ba09f3c8c6c830377b422df18cfa833e'
+  angular.module("quickDemoMovies")
+    .factory("MoviesFactory", function($http) {
 
-    function getPopular(){
-      var url = 'https://api.themoviedb.org/3/movie/popular?api_key=<%KEY%>'
-      url = url.replace('<%KEY%>',apiKey)
-      return $http.get(url)
-                .then( function(response) {
-                  console.log(response);
-                  return response.data.results;
-                })
-                .then( function(movies) {
-                  console.log(movies);
-                  return movies.map(function(movie) {
-                    var currentMovieShortened = {
-                      title: movie.title,
-                      poster_path: 'http://image.tmdb.org/t/p/w150/' + movie.poster_path
-                    }
-                    return currentMovieShortened;
-                  })
-                })
-    }
+      var apiKey = 'ba09f3c8c6c830377b422df18cfa833e'
 
-    function getUpcoming(){
-      var url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=<%KEY%>'
-      url = url.replace('<%KEY%>',apiKey)
-      return $http.get(url)
-    }
+      /* getPopular */
+      function getPopular(){
+        var url = 'https://api.themoviedb.org/3/movie/popular?api_key=<%KEY%>'
+        url = url.replace('<%KEY%>',apiKey)
 
-    function getNowPlaying(){
-      var url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=<%KEY%>'
-      url = url.replace('<%KEY%>',apiKey)
-      return $http.get(url)
-    }
+        return $http.get(url)
+                  .then( getResults )
+                  .then( shortenResults )
+      }
 
-    function getTopRated(){
-      var url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=<%KEY%>'
-      url = url.replace('<%KEY%>',apiKey)
-      return $http.get(url)
-    }
+      /* getUpcoming */
+      function getUpcoming(){
+        var url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=<%KEY%>'
+        url = url.replace('<%KEY%>',apiKey)
+        return $http.get(url)
+      }
 
-    return {
-      getPopular: getPopular,
-      getUpcoming: getUpcoming,
-      getNowPlaying: getNowPlaying,
-      getTopRated: getTopRated
-    }
+      function getNowPlaying(){
+        var url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=<%KEY%>'
+        url = url.replace('<%KEY%>',apiKey)
+        return $http.get(url)
+      }
 
-  })
+      function getTopRated(){
+        var url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=<%KEY%>'
+        url = url.replace('<%KEY%>',apiKey)
+        return $http.get(url)
+      }
+
+      return {
+        getPopular: getPopular,
+        getUpcoming: getUpcoming,
+        getNowPlaying: getNowPlaying,
+        getTopRated: getTopRated
+      }
+
+    })
+
+  function getResults(response) {
+    console.log(response);
+    return response.data.results;
+  }
+
+  function shortenResults(movies) {
+    console.log(movies);
+    return movies.map(function(movie) {
+      var currentMovieShortened = {
+        title: movie.title,
+        poster_path: 'http://image.tmdb.org/t/p/w150/' + movie.poster_path
+      }
+      return currentMovieShortened;
+    })
+  }
+
+})()
